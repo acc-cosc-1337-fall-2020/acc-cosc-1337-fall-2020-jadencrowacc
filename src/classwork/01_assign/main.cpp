@@ -7,10 +7,11 @@
 int main()
 {
     int num;
+    std::cout << "type number: ";
     std::cin >> num;
 
     int result = multiply_numbers(num);
-    std::cout << "result: " << result;
+    std::cout << "result: " << result << "\n";
 
     int num1 = 4;
 
