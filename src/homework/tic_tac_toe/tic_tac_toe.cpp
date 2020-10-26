@@ -9,33 +9,8 @@ using std::string;
 using std::cout;
 
 bool tic_tac_toe::game_over() {
-    for (int i = 0; i <= 6; i += 3)
-        if (board[0 + i] != " " && board[0 + i] == board[1 + i] && board[1 + i] == board[2 + i]) {
-            cout << board[0 + i] << " wins!";
-            return true;
-        }
 
-    for (int i = 0; i < 3; i += 1)
-        if (board[0 + i] != " " && board[0 + i] == board[3 + i] && board[3 + i] == board[6 + i]) {
-            cout << board[0 + i] << " wins!";
-            return true;
-        }
-
-    if (board[4] != " " && board[0] == board[4] && board[4] == board[8]) {
-        cout << board[4] << " wins!";
-        return true;
-    }
-
-    if (board[4] != " " && board[2] == board[4] && board[4] == board[6]) {
-        cout << board[4] << " wins!";
-        return true;
-    }
-
-    if (check_board_full()) {
-        cout << "Tie.";
-        return true;
-    }
-    return false;
+    return check_board_full();
 }
 
 void tic_tac_toe::start_game(string first_player) {
