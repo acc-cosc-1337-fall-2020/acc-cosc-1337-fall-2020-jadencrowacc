@@ -5,8 +5,7 @@
 using std::string;
 using std::vector;
 
-class tic_tac_toe
-{
+class tic_tac_toe {
 public:
 
     bool game_over();
@@ -19,16 +18,29 @@ public:
 
     void display_board();
 
-    void set_next_player();
-
-    bool check_board_full();
-
-    void clear_board();
+    string get_winner();
 
 private:
 
+    string winner;
     string player;
-    vector<string> board = {" "," "," ",
-                            " "," "," ",
-                            " "," "," ",};
+    vector<string> board = {" ", " ", " ",
+                            " ", " ", " ",
+                            " ", " ", " ",};
+
+    void clear_board();
+
+    bool check_board_full();
+
+    void set_next_player();
+
+    bool check_column_win();
+
+    bool check_row_win();
+
+    bool check_diagonal_win();
+
+    void set_winner();
+
+
 };
