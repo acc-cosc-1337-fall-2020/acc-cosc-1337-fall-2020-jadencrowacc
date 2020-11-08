@@ -37,14 +37,6 @@ string tic_tac_toe::get_player() {
     return player;
 }
 
-void tic_tac_toe::display_board() {
-    for (int i = 1; i <= board.size(); i++) {
-        cout << board[i - 1];
-        if (i % 3 == 0)
-            cout << "\n";
-    }
-}
-
 void tic_tac_toe::set_next_player() {
     if (player == "X")
         player = "O";
@@ -90,4 +82,27 @@ bool tic_tac_toe::check_diagonal_win() {
 void tic_tac_toe::set_winner() {
     set_next_player();
     winner = player;
+}
+
+std::ostream &operator<<(std::ostream &out, const tic_tac_toe &game) {
+    out << "\n===\n";
+    for (int i = 1; i <= game.board.size(); i++) {
+        out << game.board[i - 1];
+        if (i % 3 == 0) {
+            out << "\n";
+        }
+    }
+    out << "===\n";
+    return out;
+}
+
+std::istream &operator>>(std::istream &in, tic_tac_toe &game) {
+    cout << game.get_player() << " it is your turn, type a number 1-9 to place you peg: ";
+    int position = 0;
+    in >> position;
+    while (!game.mark_board(position)) {
+        cout << "Invalid input, please type a number 1-9: ";
+        in >> position;
+    }
+    return in;
 }

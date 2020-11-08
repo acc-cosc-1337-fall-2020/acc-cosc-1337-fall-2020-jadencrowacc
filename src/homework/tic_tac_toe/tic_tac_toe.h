@@ -16,9 +16,11 @@ public:
 
     string get_player();
 
-    void display_board();
-
     string get_winner();
+
+    friend std::ostream &operator<<(std::ostream &out, const tic_tac_toe &game);
+
+    friend std::istream &operator>>(std::istream &in, tic_tac_toe &game);
 
 private:
 
