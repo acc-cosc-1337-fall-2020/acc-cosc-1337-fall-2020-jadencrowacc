@@ -1,3 +1,6 @@
+#ifndef tictactoe_h
+#define tictactoe_h
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -47,3 +50,5 @@ protected:
 
     vector<string> board;
 };
+
+#endif
