@@ -1,12 +1,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <bits/unique_ptr.h>
 
 using std::string;
 using std::vector;
 
 class tic_tac_toe {
 public:
+    explicit tic_tac_toe(int s) : board(s * s, " ") {}
 
     bool game_over();
 
@@ -26,9 +28,6 @@ private:
 
     string winner;
     string player;
-    vector<string> board = {" ", " ", " ",
-                            " ", " ", " ",
-                            " ", " ", " ",};
 
     void clear_board();
 
@@ -36,13 +35,15 @@ private:
 
     void set_next_player();
 
-    bool check_column_win();
-
-    bool check_row_win();
-
-    bool check_diagonal_win();
-
     void set_winner();
 
+protected:
 
+    virtual bool check_column_win() = 0;
+
+    virtual bool check_row_win() = 0;
+
+    virtual bool check_diagonal_win() = 0;
+
+    vector<string> board;
 };

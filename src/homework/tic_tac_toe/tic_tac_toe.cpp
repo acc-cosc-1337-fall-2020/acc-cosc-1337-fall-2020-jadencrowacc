@@ -1,8 +1,8 @@
 //cpp
 
-#include "tic_tac_toe.h"
 #include <iostream>
 #include <string>
+#include "tic_tac_toe.h"
 
 using std::string;
 
@@ -58,25 +58,6 @@ void tic_tac_toe::clear_board() {
 
 string tic_tac_toe::get_winner() {
     return winner;
-}
-
-bool tic_tac_toe::check_column_win() {
-    for (int i = 0; i < 3; i += 1)
-        if (board[0 + i] != " " && board[0 + i] == board[3 + i] && board[3 + i] == board[6 + i])
-            return true;
-    return false;
-}
-
-bool tic_tac_toe::check_row_win() {
-    for (int i = 0; i <= 6; i += 3)
-        if (board[0 + i] != " " && board[0 + i] == board[1 + i] && board[1 + i] == board[2 + i])
-            return true;
-    return false;
-}
-
-bool tic_tac_toe::check_diagonal_win() {
-    return (board[4] != " " && board[2] == board[4] && board[4] == board[6]) ||
-           (board[4] != " " && board[0] == board[4] && board[4] == board[8]);
 }
 
 void tic_tac_toe::set_winner() {
