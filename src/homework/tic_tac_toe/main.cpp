@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
 #include "tic_tac_toe_manager.h"
 
 using std::cout;
@@ -12,7 +13,17 @@ int main() {
     std::unique_ptr<tic_tac_toe> game;
     string play_again = "Y";
     while (play_again == "Y") {
-        game = std::make_unique<tic_tac_toe_3>();
+
+        string game_type;
+        while (game_type != "3" && game_type != "4") {
+            cout << "Please type 3 or 4 to select game type: ";
+            cin >> game_type;
+        }
+
+        if (game_type == "3")
+            game = std::make_unique<tic_tac_toe_3>();
+        else
+            game = std::make_unique<tic_tac_toe_4>();
 
         string first_player;
         while (first_player != "X" && first_player != "O") {
