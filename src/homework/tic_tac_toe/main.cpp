@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include <tic_tac_toe_manager.h>
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_manager.h"
 
 using std::cout;
 using std::cin;
@@ -8,9 +9,10 @@ using std::string;
 
 int main() {
     tic_tac_toe_manager manager;
-    tic_tac_toe game;
+    std::unique_ptr<tic_tac_toe> game;
     string play_again = "Y";
     while (play_again == "Y") {
+        game = std::make_unique<tic_tac_toe_3>();
 
         string first_player;
         while (first_player != "X" && first_player != "O") {
@@ -18,18 +20,18 @@ int main() {
             cin >> first_player;
         }
 
-        game.start_game(first_player);
+        game->start_game(first_player);
 
-        while (!game.game_over()) {
-            cin >> game;
-            cout << game;
+        while (!game->game_over()) {
+            cin >> *game;
+            cout << *game;
         }
-        if (game.get_winner() == "C")
+        if (game->get_winner() == "C")
             cout << "Tie.\n";
         else
-            cout << game.get_winner() << " wins!\n";
+            cout << game->get_winner() << " wins!\n";
 
-        manager.save_game(game);
+        manager.save_game(std::move(game));
 
         int x_wins, o_wins, ties;
         manager.get_winner_total(o_wins, x_wins, ties);

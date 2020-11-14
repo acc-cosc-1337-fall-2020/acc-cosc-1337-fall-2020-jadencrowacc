@@ -4,14 +4,13 @@
 #include <string>
 
 std::ostream &operator<<(std::ostream &out, const tic_tac_toe_manager &manager) {
-    for (const tic_tac_toe &game : manager.games)
-        out << game;
+    for (auto &game : manager.games)
+        out << *game;
     return out;
 }
 
-void tic_tac_toe_manager::save_game(tic_tac_toe game) {
-    games.push_back(game);
-    switch (game.get_winner()[0]) {
+void tic_tac_toe_manager::save_game(std::unique_ptr<tic_tac_toe> game) {
+    switch (game->get_winner()[0]) {
         case 'O':
             o_wins++;
             break;
@@ -22,6 +21,7 @@ void tic_tac_toe_manager::save_game(tic_tac_toe game) {
             ties++;
             break;
     }
+    games.push_back(std::move(game));
 }
 
 void tic_tac_toe_manager::get_winner_total(int &o, int &x, int &t) {

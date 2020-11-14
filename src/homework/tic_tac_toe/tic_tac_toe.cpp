@@ -5,7 +5,6 @@
 #include "tic_tac_toe.h"
 
 using std::string;
-
 using std::cout;
 
 bool tic_tac_toe::game_over() {
