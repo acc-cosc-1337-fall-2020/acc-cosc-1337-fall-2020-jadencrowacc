@@ -1,6 +1,7 @@
 //cpp
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <cmath>
 #include "tic_tac_toe.h"
@@ -87,4 +88,17 @@ std::istream &operator>>(std::istream &in, tic_tac_toe &game) {
         in >> position;
     }
     return in;
+}
+
+std::ofstream &operator<<(std::ofstream &file, const tic_tac_toe &game) {
+    for (const string &peg : game.board) {
+        file << peg;
+    }
+    file << game.winner << std::endl;
+    return file;
+}
+
+tic_tac_toe::tic_tac_toe(std::vector<string> p, string win) {
+    board = std::move(p);
+    winner = std::move(win);
 }

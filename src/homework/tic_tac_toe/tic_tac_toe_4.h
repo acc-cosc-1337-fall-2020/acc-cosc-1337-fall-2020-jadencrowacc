@@ -10,4 +10,6 @@ class tic_tac_toe_4 : public tic_tac_toe { ;
 
 public:
     tic_tac_toe_4() : tic_tac_toe(4) {}
+
+    tic_tac_toe_4(std::vector<string> p, string win) : tic_tac_toe(std::move(p), std::move(win)) {}
 };

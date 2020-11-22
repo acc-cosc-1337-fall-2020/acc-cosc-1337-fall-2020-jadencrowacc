@@ -13,6 +13,8 @@ class tic_tac_toe {
 public:
     explicit tic_tac_toe(int s) : board(s * s, " ") {}
 
+    tic_tac_toe(std::vector<string> p, string win);
+
     bool game_over();
 
     void start_game(string first_player);
@@ -26,6 +28,8 @@ public:
     friend std::ostream &operator<<(std::ostream &out, const tic_tac_toe &game);
 
     friend std::istream &operator>>(std::istream &in, tic_tac_toe &game);
+
+    friend std::ofstream &operator<<(std::ofstream &file, const tic_tac_toe &game);
 
 private:
 
